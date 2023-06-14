@@ -1,34 +1,34 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    if (request.getMethod().equalsIgnoreCase("post")) {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+    String username = request.getParameter("username");
+    String password = request.getParameter("password");
+
         if (username.equals("admin") && password.equals("password")) {
-            response.sendRedirect("/profile");
+            response.sendRedirect("/profile.jsp");
+        } else {
+            response.sendRedirect("/login.jsp");
         }
-    }
+
 %>
 <html>
 <head>
-    <jsp:include page="partials/head.jsp">
-        <jsp:param name="title" value="Please Log In" />
-    </jsp:include>
+    <%@ include file="partials/head.jsp" %>
+    <title>Login</title>
 </head>
 <body>
-    <jsp:include page="partials/navbar.jsp" />
-    <div class="container">
-        <h1>Please Log In</h1>
-        <form action="/login.jsp" method="POST">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input id="username" name="username" class="form-control" type="text">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input id="password" name="password" class="form-control" type="password">
-            </div>
-            <input type="submit" class="btn btn-primary btn-block" value="Log In">
-        </form>
-    </div>
+<%@ include file="partials/navbar.jsp" %>
+<div class="container w-50">
+    <form action="login.jsp" method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" class="form-control" id="username" value="admin">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" id="password" value="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 </body>
 </html>
