@@ -8,15 +8,15 @@ import java.io.IOException;
 @WebServlet(name = "PickColorServlet", urlPatterns = "/pickcolor")
 public class PickColorServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/viewcolor.jsp");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/pickcolor.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String userFavColor = request.getParameter("usercolor");
-        System.out.println(userFavColor);
-        response.sendRedirect("/viewcolor.jsp?usercolor=userFavColor");
+
+
     }
 
 }

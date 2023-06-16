@@ -8,11 +8,13 @@ import java.io.IOException;
 @WebServlet(name = "ViewColorServlet", urlPatterns = "/viewcolor")
 public class ViewColorServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("userFavColor", req.getParameter("usercolor"));
-    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String colorInfo = request.getParameter("usercolor");
+        System.out.println(colorInfo);
+        request.setAttribute("pageColor", colorInfo);
+        request.getRequestDispatcher("/viewcolor.jsp").forward(request, response);
+
 
 
     }

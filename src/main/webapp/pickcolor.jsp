@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
     <%@ include file="partials/head.jsp" %>
@@ -10,7 +9,7 @@
 
 <h1 class="text-center">Welcome to "YOUR FAVORITE COLOR"</h1>
 <div class="container text-center">
-    <form action="/pickcolor" method="POST">
+    <form action="/viewcolor" method="POST">
         <div>
             <label for="favcolor">Enter Your Favor Color:</label>
             <input class="ms-4" type="text" class="form-control-plaintext" id="favcolor" name="usercolor">

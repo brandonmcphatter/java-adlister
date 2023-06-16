@@ -9,8 +9,8 @@ import java.io.IOException;
 public class PizzaOrderServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.getRequestDispatcher("/pizza-order.jsp").forward(request, response);
-    }
+        request.getRequestDispatcher("/pizza-order.jsp").forward(request,response);
+        }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Pizza Order = new Pizza();
