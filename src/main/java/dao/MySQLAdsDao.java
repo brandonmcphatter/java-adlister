@@ -1,10 +1,14 @@
+package dao;
+
 import java.sql.*;
 import java.sql.DriverManager;
 import com.mysql.cj.jdbc.Driver;
+import model.Ad;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLAdsDao implements Ads{
+public class MySQLAdsDao implements Ads {
 
     private Connection connection = null;
 
@@ -27,7 +31,7 @@ public class MySQLAdsDao implements Ads{
         Statement statement = null;
         try {
             statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM ads");
+            ResultSet rs = statement.executeQuery("SELECT * FROM ads ORDER BY id");
             return createAds(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error", e);
@@ -38,10 +42,7 @@ public class MySQLAdsDao implements Ads{
         List<Ad> ads = new ArrayList<>();
 
         while (rs.next()) {
-            System.out.println(rs.getLong("id"));
-            System.out.println(rs.getLong("user_id"));
-            System.out.println(rs.getString("title"));
-            System.out.println(rs.getString("description"));
+            ads.add(extractAd(rs));
         }
         return ads;
     }

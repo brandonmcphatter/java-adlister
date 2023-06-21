@@ -1,3 +1,4 @@
+package controllers;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +9,7 @@ import java.io.IOException;
 
 
 
-@WebServlet(name = "AdsIndexServlet", urlPatterns = "/ads")
+@WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/ads")
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
