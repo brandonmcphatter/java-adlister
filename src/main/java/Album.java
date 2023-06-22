@@ -2,13 +2,23 @@ import java.io.Serializable;
 
 public class Album implements Serializable {
 
+    private int id;
     private String artist;
     private String name;
-    private Integer release_date;
-    private Integer sales;
+    private int release_date;
+    private double sales;
     private String genre;
 
     public Album() {
+    }
+
+    public Album(int id, String artist, String name, int release_date, double sales, String genre) {
+        this.id = id;
+        this.artist = artist;
+        this.name = name;
+        this.release_date = release_date;
+        this.sales = sales;
+        this.genre = genre;
     }
 
     public String getArtist() {
@@ -19,11 +29,11 @@ public class Album implements Serializable {
         return name;
     }
 
-    public Integer getRelease_date() {
+    public int getRelease_date() {
         return release_date;
     }
 
-    public Integer getSales() {
+    public double getSales() {
         return sales;
     }
 
@@ -49,5 +59,17 @@ public class Album implements Serializable {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "id=" + id +
+                ", artist='" + artist + '\'' +
+                ", name='" + name + '\'' +
+                ", release_date=" + release_date +
+                ", sales=" + sales +
+                ", genre='" + genre + '\'' +
+                '}';
     }
 }
