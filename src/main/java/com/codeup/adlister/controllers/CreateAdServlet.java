@@ -15,15 +15,15 @@ import java.io.IOException;
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.getSession().getAttribute("user") == null) {
+
+        if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
-            // add a return statement to exit out of the entire method.
-            return;
+        } else {
+            request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
+                    .forward(request, response);
         }
-
-        request.getRequestDispatcher("/WEB-INF/ads/create.jsp").forward(request, response);
-
     }
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User loggedInUser = (User) request.getSession().getAttribute("user");
