@@ -5,7 +5,6 @@ import com.codeup.adlister.models.User;
 import org.mindrot.jbcrypt.BCrypt;
 
 import com.codeup.adlister.util.Password;
-import org.mindrot.jbcrypt.BCrypt;
 
 
 import javax.servlet.ServletException;
