@@ -22,8 +22,10 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
-        String password = BCrypt.hashpw(request.getParameter("password"), BCrypt.gensalt());
-        boolean passwordConfirmation = BCrypt.checkpw(request.getParameter("confirm_password"), password);
+        String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("confirm_password");
+        String hashedPassword = Password.hash(password);
+        boolean passwordConfirmation = password.equals(confirmPassword);
 
         // validate input
         boolean inputHasErrors = username.isEmpty()
@@ -37,13 +39,10 @@ public class RegisterServlet extends HttpServlet {
         }
 
         // create and save a new user
-        User user = new User(username, email, password);
+        User user = new User(username, email, hashedPassword);
 
         // hash the password
 
-        String hash = Password.hash(user.getPassword());
-
-        user.setPassword(hash);
 
         DaoFactory.getUsersDao().insert(user);
         response.sendRedirect("/login");
