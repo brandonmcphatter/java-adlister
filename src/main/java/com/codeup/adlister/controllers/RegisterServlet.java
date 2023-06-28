@@ -23,7 +23,8 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirm_password");
-        String hashedPassword = Password.hash(password);
+        String hashedPassword = Password.hash(password);    // hash the password
+
         boolean passwordConfirmation = password.equals(confirmPassword);
 
         // check username for uniqueness and email / password entry
@@ -34,6 +35,7 @@ public class RegisterServlet extends HttpServlet {
             response.sendRedirect("/register");
             return;
         }
+
         if (existingUser != null) {
             System.out.println("This username is taken");
             response.sendRedirect("/register");
